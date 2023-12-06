@@ -18,20 +18,27 @@ public class LoginScreenForm {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                // Check if the username and password are correct
                 if ("admin".equals(username) && "123".equals(password)) {
-                    // If login is successful, show the next part of your application
-                    welcomeLabel.setText("Dobrodošli!"); // Set welcome message
-                    // You can here call a method that will change the view to the next part of the application
+                    // Uspješna prijava, prelazak na sljedeći dio aplikacije
                 } else {
-                    // If login is unsuccessful, show an option to try again or exit
-                    int action = JOptionPane.showConfirmDialog(panel1, "Nepostojeći korisnik. Pokušajte ponovo?", "Greška pri prijavi", JOptionPane.YES_NO_OPTION);
-                    if (action == JOptionPane.YES_OPTION) {
-                        // User chose to try again, clear the fields for new input
+                    // Prikazujemo JOptionPane s opcijama "Pokušaj ponovo" i "Izađi"
+                    int option = JOptionPane.showOptionDialog(
+                            null,
+                            "Neispravno korisničko ime ili lozinka. Pokušajte ponovo.",
+                            "Pogreška pri prijavi",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.ERROR_MESSAGE,
+                            null,
+                            new String[]{"Pokušaj ponovo", "Izađi"}, // opcije
+                            "Pokušaj ponovo" // default izbor
+                    );
+
+                    if (option == JOptionPane.YES_OPTION) {
+                        // Korisnik je odabrao "Pokušaj ponovo", očistimo polja za unos
                         usernameField.setText("");
                         passwordField.setText("");
                     } else {
-                        // User chose to exit
+                        // Korisnik je odabrao "Izađi", zatvaramo aplikaciju
                         System.exit(0);
                     }
                 }
