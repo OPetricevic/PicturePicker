@@ -19,7 +19,18 @@ public class LoginScreenForm {
                 String password = new String(passwordField.getPassword());
 
                 if ("admin".equals(username) && "123".equals(password)) {
-                    // Uspješna prijava, prelazak na sljedeći dio aplikacije
+                    // Hide the login window
+                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                    topFrame.dispose(); // Dispose the current frame
+
+                    // Open the ProgressFurtherForm
+                    ProgressFurtherForm progressForm = new ProgressFurtherForm();
+                    JFrame progressFrame = new JFrame("Welcome");
+                    progressFrame.setContentPane(progressForm.getProgressPanel());
+                    progressFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    progressFrame.pack();
+                    progressFrame.setLocationRelativeTo(null);
+                    progressFrame.setVisible(true);
                 } else {
                     // Prikazujemo JOptionPane s opcijama "Pokušaj ponovo" i "Izađi"
                     int option = JOptionPane.showOptionDialog(
