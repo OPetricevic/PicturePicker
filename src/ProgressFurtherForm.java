@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class ProgressFurtherForm {
-    public JPanel progressPanel; // Assuming this is correctly linked to your GUI Designer's JPanel
+    private JPanel progressPanel; // Assuming this is correctly linked to your GUI Designer's JPanel
     private JButton exitButton; // Assuming this is your "Izadji" button in the GUI Designer
     private JButton proceedFurther; // Assuming this is your "Dalje" button in the GUI Designer
 

@@ -25,7 +25,7 @@ public class LoginScreenForm {
 
                     // Open the ProgressFurtherForm
                     ProgressFurtherForm progressForm = new ProgressFurtherForm();
-                    JFrame progressFrame = new JFrame("Welcome");
+                    JFrame progressFrame = new JFrame("Dobrodošli u MOJORMAR");
                     progressFrame.setContentPane(progressForm.getProgressPanel());
                     progressFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     progressFrame.pack();
