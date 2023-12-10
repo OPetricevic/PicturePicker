@@ -8,7 +8,7 @@ public class LoginScreenForm {
     private JLabel usernameLabel;
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JLabel welcomeLabel; // Changed from welcomeField to welcomeLabel for clarity
+    private JLabel welcomeLabel;
     private JButton loginButton;
 
     public LoginScreenForm() {
