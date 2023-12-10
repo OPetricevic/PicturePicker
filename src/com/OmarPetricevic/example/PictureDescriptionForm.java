@@ -1,17 +1,19 @@
+package com.OmarPetricevic.example;
+
 import javax.swing.*;
 import java.net.URL;
-import java.awt.*;
 
 public class PictureDescriptionForm {
     private JPanel pictureDescriptionPanel;
-    private JLabel pictureNameLabel; // Make sure this field exists with this exact name
     private JLabel pictureImgLabel;
+    private JLabel pictureLabel;
     private JTextArea pictureDescriptionTextArea;
-    private JTextArea pictureDescriptionTextAreaMain; // This also needs to match exactly
     private JButton backButton;
     private JButton exitButton;
+    private JTextArea pictureStyleOptionTextArea;
+    private JLabel pictureNameLabel;
 
-    public PictureDescriptionForm(String imageName, String description) {
+    public PictureDescriptionForm(String imageName, String description, String styleOptionDescription) {
         // Assuming the images are placed directly under the 'DescriptionImages' folder in the resources
         URL imageUrl = getClass().getResource("/DescriptionImages/" + imageName);
         if (imageUrl != null) {
@@ -19,7 +21,6 @@ public class PictureDescriptionForm {
             pictureImgLabel.setIcon(imageIcon);
         } else {
             System.err.println("Image not found: " + imageName);
-            // Handle the error, for example, by displaying a placeholder image or an error message
         }
 
         // Set the description text
@@ -27,6 +28,11 @@ public class PictureDescriptionForm {
         pictureDescriptionTextArea.setWrapStyleWord(true);
         pictureDescriptionTextArea.setLineWrap(true);
         pictureDescriptionTextArea.setEditable(false);
+
+        pictureStyleOptionTextArea.setText(styleOptionDescription);
+        pictureStyleOptionTextArea.setWrapStyleWord(true);
+        pictureStyleOptionTextArea.setLineWrap(true);
+        pictureStyleOptionTextArea.setEditable(false);
 
         // Set up the button actions
         backButton.addActionListener(e -> closeFrame());

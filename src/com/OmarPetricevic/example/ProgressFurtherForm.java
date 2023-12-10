@@ -1,3 +1,5 @@
+package com.OmarPetricevic.example;
+
 import javax.swing.*;
 
 public class ProgressFurtherForm {
@@ -14,7 +16,7 @@ public class ProgressFurtherForm {
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(progressPanel);
             topFrame.dispose(); // Dispose the current frame
 
-            // Create and show the PicturePickerForm
+            // Create and show the com.OmarPetricevic.example.PicturePickerForm
             PicturePickerForm picturePickerForm = new PicturePickerForm();
             JFrame picturePickerFrame = new JFrame("Select a Picture");
             picturePickerFrame.setContentPane(picturePickerForm.getPicturePickerField());

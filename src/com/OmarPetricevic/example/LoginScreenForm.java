@@ -1,3 +1,5 @@
+package com.OmarPetricevic.example;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,9 +23,9 @@ public class LoginScreenForm {
                 if ("admin".equals(username) && "123".equals(password)) {
                     // Hide the login window
                     JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                    topFrame.dispose(); // Dispose the current frame
+                    topFrame.dispose();
 
-                    // Open the ProgressFurtherForm
+                    // Open the com.OmarPetricevic.example.ProgressFurtherForm
                     ProgressFurtherForm progressForm = new ProgressFurtherForm();
                     JFrame progressFrame = new JFrame("Dobrodošli u MOJORMAR");
                     progressFrame.setContentPane(progressForm.getProgressPanel());

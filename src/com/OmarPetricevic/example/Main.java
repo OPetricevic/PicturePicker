@@ -1,3 +1,5 @@
+package com.OmarPetricevic.example;
+
 import javax.swing.*;
 
 public class Main {
