@@ -6,7 +6,6 @@ import java.net.URL;
 public class PictureDescriptionForm {
     private JPanel pictureDescriptionPanel;
     private JLabel pictureImgLabel;
-    private JLabel pictureLabel;
     private JTextArea pictureDescriptionTextArea;
     private JButton backButton;
     private JButton exitButton;
@@ -14,7 +13,6 @@ public class PictureDescriptionForm {
     private JLabel pictureNameLabel;
 
     public PictureDescriptionForm(String imageName, String description, String styleOptionDescription) {
-        // Assuming the images are placed directly under the 'DescriptionImages' folder in the resources
         URL imageUrl = getClass().getResource("/DescriptionImages/" + imageName);
         if (imageUrl != null) {
             ImageIcon imageIcon = new ImageIcon(imageUrl);
@@ -23,7 +21,6 @@ public class PictureDescriptionForm {
             System.err.println("Image not found: " + imageName);
         }
 
-        // Set the description text
         pictureDescriptionTextArea.setText(description);
         pictureDescriptionTextArea.setWrapStyleWord(true);
         pictureDescriptionTextArea.setLineWrap(true);
@@ -34,16 +31,21 @@ public class PictureDescriptionForm {
         pictureStyleOptionTextArea.setLineWrap(true);
         pictureStyleOptionTextArea.setEditable(false);
 
-        // Set up the button actions
-        backButton.addActionListener(e -> closeFrame());
+        backButton.addActionListener(e -> {
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(pictureDescriptionPanel);
+            if (topFrame != null) {
+                topFrame.dispose();
+            }
+            // Here you can create a new instance of PicturePickerForm and make it visible again
+            PicturePickerForm picturePickerForm = new PicturePickerForm();
+            JFrame pickerFrame = new JFrame("Select a Picture");
+            pickerFrame.setContentPane(picturePickerForm.getPicturePickerField());
+            pickerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            pickerFrame.pack();
+            pickerFrame.setLocationRelativeTo(null);
+            pickerFrame.setVisible(true);
+        });
         exitButton.addActionListener(e -> System.exit(0));
-    }
-
-    private void closeFrame() {
-        JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(pictureDescriptionPanel);
-        if (topFrame != null) {
-            topFrame.dispose();
-        }
     }
 
     public JPanel getPictureDescriptionPanel() {
@@ -58,5 +60,4 @@ public class PictureDescriptionForm {
         }
         return new ImageIcon(imageUrl);
     }
-
 }

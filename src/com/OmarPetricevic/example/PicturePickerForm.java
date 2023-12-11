@@ -65,7 +65,11 @@ public class PicturePickerForm {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
+
+        JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(picturePickerField);
+        if (topFrame != null) {
+            topFrame.dispose();
+        }    }
 
     public JPanel getPicturePickerField() {
         return picturePickerField;
